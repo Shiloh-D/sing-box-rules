@@ -211,7 +211,7 @@ jobs:
       - name: Add Awavenue-ads
         run: |
           curl -sSL $AWAVENUE_ADS_RULES_SRS_URL | perl -ne 'print unless/^\s*(\/\/.*|)$/' >> awavenue-ads.srs
-          mv awavenue-ads.srs ./publish/awavenue-ads.srs
+          mv awavenue-ads.srs publish/awavenue-ads.srs
           
       - name: Move files
         run: |
