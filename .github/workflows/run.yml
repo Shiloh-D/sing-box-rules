@@ -208,7 +208,7 @@ jobs:
           go run -v .
           sha256sum geoip.db > geoip.db.sha256sum
 
-          - name: Add Awavenue-ads
+      - name: Add Awavenue-ads
         run: |
           mkdir -p publish/singbox_rule_set
           curl -sSL $AWAVENUE_ADS_RULES_SRS_URL | perl -ne 'print unless/^\s*(\/\/.*|)$/' >> awavenue-ads.srs
