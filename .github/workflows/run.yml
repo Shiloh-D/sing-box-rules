@@ -208,14 +208,15 @@ jobs:
           go run -v .
           sha256sum geoip.db > geoip.db.sha256sum
 
-      - name: Add Awavenue-ads
+          - name: Add Awavenue-ads
         run: |
+          mkdir -p publish/singbox_rule_set
           curl -sSL $AWAVENUE_ADS_RULES_SRS_URL | perl -ne 'print unless/^\s*(\/\/.*|)$/' >> awavenue-ads.srs
-          mv awavenue-ads.srs publish/awavenue-ads.srs
+          cp awavenue-ads.srs publish/awavenue-ads.srs
+          cp awavenue-ads.srs publish/singbox_rule_set/awavenue-ads.srs
           
       - name: Move files
         run: |
-          mkdir -p publish/singbox_rule_set
           mkdir -p publish/singbox_ip_rule_set
           install -Dp ./geoip.dat ./publish/geoip.dat
           install -Dp ./geoip.dat.sha256sum ./publish/geoip.dat.sha256sum
