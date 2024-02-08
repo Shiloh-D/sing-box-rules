@@ -213,7 +213,7 @@ jobs:
           mkdir -p publish/singbox_rule_set
           curl -sSL $AWAVENUE_ADS_RULES_SRS_URL | perl -ne 'print unless/^\s*(\/\/.*|)$/' >> awavenue-ads.srs
           cp awavenue-ads.srs publish/awavenue-ads.srs
-          cp awavenue-ads.srs publish/singbox_rule_set/awavenue-ads.srs
+          cp awavenue-ads.srs publish/singbox_rule_set/geosite-awavenue-ads.srs
           
       - name: Move files
         run: |
