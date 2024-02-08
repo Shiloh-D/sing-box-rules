@@ -1,3 +1,2 @@
-用法同 Loyalsoldier/v2ray-rules-dat
-
-rule_set添加awavenue-ads 使用AWAvenue 秋风广告规则
+用法参考[Loyalsoldier/v2ray-rules-dat](https://github.com/Loyalsoldier/v2ray-rules-dat)  
+- rule_set添加`awavenue-ads` 使用[AWAvenue 秋风广告规则](https://github.com/TG-Twilight/AWAvenue-Ads-Rule)
