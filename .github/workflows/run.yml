@@ -224,10 +224,10 @@ jobs:
           install -Dp ./custom/publish/geosite.dat.sha256sum ./publish/geosite.dat.sha256sum
           install -Dp ./sing-geosite/geosite.db ./publish/geosite.db
           install -Dp ./sing-geosite/geosite.db.sha256sum ./publish/geosite.db.sha256sum
-          install -Dp ./sing-geosite/singbox_rule_set/* ./publish/singbox_rule_set/
+          # install -Dp ./sing-geosite/singbox_rule_set/* ./publish/singbox_rule_set/
           install -Dp ./sing-geoip/geoip.db ./publish/geoip.db
           install -Dp ./sing-geoip/geoip.db.sha256sum ./publish/geoip.db.sha256sum
-          install -Dp ./sing-geoip/rule-set/* ./publish/singbox_ip_rule_set/
+          # install -Dp ./sing-geoip/rule-set/* ./publish/singbox_ip_rule_set/
           install -p {proxy,direct,reject}-tld-list.txt ./publish/
           install -p {proxy,direct,reject}-list.txt ./publish/
           install -p {china-list,apple-cn,google-cn,gfw,win-spy,win-update,win-extra}.txt ./publish/
