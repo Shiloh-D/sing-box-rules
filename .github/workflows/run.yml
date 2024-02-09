@@ -178,10 +178,10 @@ jobs:
           go run ./ --datapath=../community/data
           sha256sum publish/geosite.dat > publish/geosite.dat.sha256sum
           
-      - name: Checkout CHIZI-0618/sing-geosite
+      - name: Checkout Shiloh-D/sing-geosite
         uses: actions/checkout@v4
         with:
-          repository: CHIZI-0618/sing-geosite
+          repository: Shiloh-D/sing-geosite
           path: sing-geosite
 
       - name: Build geosite.db and srs files
