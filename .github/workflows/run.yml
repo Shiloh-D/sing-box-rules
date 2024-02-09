@@ -61,6 +61,7 @@ jobs:
         id: go_latest
         run: |
           echo go_latest=$(curl -s https://raw.githubusercontent.com/actions/go-versions/update-versions-manifest-file/versions-manifest.json | grep -oE '"version": "[0-9]{1}.[0-9]{1,}(.[0-9]{1,})?"' | head -1 | cut -d':' -f2 | sed 's/ //g; s/"//g') >> $GITHUB_OUTPUT
+
       - name: setup go
         uses: actions/setup-go@v5.0.0
         with:
@@ -220,16 +221,17 @@ jobs:
           wget https://github.com/IrineSistiana/mosdns/releases/download/v4.5.3/mosdns-linux-amd64.zip -O mosdns.zip && unzip mosdns.zip
           chmod 755 mosdns sing-box convert.sh && ./convert.sh
           rm mosdns* sing-box* convert.sh geoip.dat geosite.db LICENSE README.md config.yaml
-          
+
       - name: Add Awavenue-ads
         run: |
           curl -sSL $AWAVENUE_ADS_RULES_SRS_URL | perl -ne 'print unless/^\s*(\/\/.*|)$/' >> awavenue-ads.srs
-          mv awavenue-ads* ./sing_box_rules/rule_set_site
+          mv awavenue-ads.srs ./sing_box_rules/rule_set_site
           
       - name: Move files
         run: |
-          mkdir -p publish/rule_set_site
-          mkdir -p publish/rule_set_ip
+          # mkdir -p publish/singbox_site_rule_set
+          # mkdir -p publish/singbox_ip_rule_set
+          install -Dp ./sing_box_rules/rule_set_site/awavenue-ads.srs ./publish/awavenue-ads.srs
           install -Dp ./geoip.dat ./publish/geoip.dat
           install -Dp ./geoip.dat.sha256sum ./publish/geoip.dat.sha256sum
           install -Dp ./custom/publish/geosite.dat ./publish/geosite.dat
