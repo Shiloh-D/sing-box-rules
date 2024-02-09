@@ -69,8 +69,8 @@ jobs:
 
       - name: Get geoip.dat relative files
         run: |
-          wget https://github.com/Shiloh-D/geoip/raw/release/geoip.dat
-          wget https://github.com/Shiloh-D/geoip/raw/release/geoip.dat.sha256sum
+          wget https://github.com/Yuu518/geoip/raw/release/geoip.dat
+          wget https://github.com/Yuu518/geoip/raw/release/geoip.dat.sha256sum
           
       - name: Generate GFWList domains
         run: |
@@ -150,6 +150,7 @@ jobs:
           cat temp-category-ads-all.txt | perl -ne '/^((?=^.{1,255})[a-zA-Z0-9][-_a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-_a-zA-Z0-9]{0,62})*)/ && print "$1\n"' > ./community/data/category-ads-all
           cat temp-category-ads-all.txt | perl -ne 'print if not /^((?=^.{3,255})[a-zA-Z0-9][-_a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-_a-zA-Z0-9]{0,62})+)/' > reject-tld-list.txt
           
+          
       - name: Add `full`, `regexp` and `keyword` type of rules back into "cn", "geolocation-!cn" and "category-ads-all" list
         run: |
           [ -f "direct-reserve.txt" ] && cat direct-reserve.txt >> ./community/data/cn
@@ -184,10 +185,10 @@ jobs:
           go run ./ --datapath=../community/data
           sha256sum publish/geosite.dat > publish/geosite.dat.sha256sum
           
-      - name: Checkout Shiloh-D/sing-geosite
+      - name: Checkout Yuu518/sing-geosite
         uses: actions/checkout@v4.1.1
         with:
-          repository: Shiloh-D/sing-geosite
+          repository: Yuu518/sing-geosite
           path: sing-geosite
 
       - name: Build geosite.db
@@ -206,7 +207,7 @@ jobs:
       - name: Build geoip.db
         run: |
           cd sing-geoip || exit 1
-          sed -i 's/Dreamacro\/maxmind-geoip/Shiloh-D\/geoip/g' main.go
+          sed -i 's/Dreamacro\/maxmind-geoip/Yuu518\/geoip/g' main.go
           go run -v .
           sha256sum geoip.db > geoip.db.sha256sum
           
