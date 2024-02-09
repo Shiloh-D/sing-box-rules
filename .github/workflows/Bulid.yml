@@ -262,7 +262,8 @@ jobs:
       - name: Git push assets to "rule_set" branch
         run: |
             cd rule_set || exit 1
-            git ls-files -z *.json | xargs -0 git update-index --assume-unchanged
+            ls
+            find . -name "*.json" -type f -delete
             git init
             git config --local user.name "github-actions[bot]"
             git config --local user.email "67832145+github-actions[bot]@users.noreply.github.com"
