@@ -226,6 +226,7 @@ jobs:
         run: |
           curl -sSL $AWAVENUE_ADS_RULES_SRS_URL | perl -ne 'print unless/^\s*(\/\/.*|)$/' >> awavenue-ads.srs
           mv awavenue-ads.srs ./rule_set/rule_set_site
+          cp ./rule_set/rule_set_site/awavenue-ads.srs ./publish/awavenue-ads.srs
           
       - name: Move files
         run: |
@@ -235,7 +236,6 @@ jobs:
           install -Dp ./geoip.dat.sha256sum ./publish/geoip.dat.sha256sum
           install -Dp ./custom/publish/geosite.dat ./publish/geosite.dat
           install -Dp ./custom/publish/geosite.dat.sha256sum ./publish/geosite.dat.sha256sum
-          install -Dp ./rule_set/rule_set_site/awavenue-ads.srs ./publish/awavenue-ads.srs
           install -Dp ./sing-geosite/geosite.db ./publish/geosite.db
           install -Dp ./sing-geosite/geosite.db.sha256sum ./publish/geosite.db.sha256sum
           # install -Dp ./sing-geosite/singbox_rule_set/* ./publish/singbox_site_rule_set/
