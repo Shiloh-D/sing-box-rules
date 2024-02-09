@@ -228,8 +228,8 @@ jobs:
           
       - name: Move files
         run: |
-          # mkdir -p publish/singbox_site_rule_set
-          # mkdir -p publish/singbox_ip_rule_set
+          mkdir -p publish/rule_set_site
+          mkdir -p publish/rule_set_ip
           install -Dp ./geoip.dat ./publish/geoip.dat
           install -Dp ./geoip.dat.sha256sum ./publish/geoip.dat.sha256sum
           install -Dp ./custom/publish/geosite.dat ./publish/geosite.dat
